@@ -26,25 +26,29 @@ set splitbelow
 set splitright
 
 call plug#begin('~/.config/nvim/plugged')
- " Installed plugins
- Plug 'EdenEast/nightfox.nvim'
- Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
- Plug 'junegunn/fzf.vim'
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
- Plug 'w0rp/ale'
- Plug 'itchyny/lightline.vim'
- Plug 'tpope/vim-surround'
- Plug 'airblade/vim-gitgutter'
- Plug 'sheerun/vim-polyglot'
- Plug 'tpope/vim-fugitive'
- Plug 'mhinz/vim-startify'
- Plug 'mbbill/undotree'
- Plug 'preservim/nerdcommenter'
- Plug 'preservim/nerdtree'
- Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
- Plug 'Xuyuanp/nerdtree-git-plugin'
- Plug 'ryanoasis/vim-devicons'
- call plug#end()
+  """ Themes
+  " Plug 'EdenEast/nightfox.nvim'
+  Plug 'morhetz/gruvbox'
+
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+
+  Plug 'preservim/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'ryanoasis/vim-devicons'
+
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'w0rp/ale'
+  " Plug 'itchyny/lightline.vim'
+  " Plug 'tpope/vim-surround'
+  " Plug 'airblade/vim-gitgutter'
+  " Plug 'sheerun/vim-polyglot'
+  " Plug 'tpope/vim-fugitive'
+  " Plug 'mhinz/vim-startify'
+  " Plug 'mbbill/undotree'
+  " Plug 'preservim/nerdcommenter'
+call plug#end()
 
 " Automatic resizing of splits to equal sizes
 autocmd VimResized * wincmd =
@@ -60,3 +64,13 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" Search files
+nnoremap <silent> <C-p> :GFiles  --others --exclude-standard --cached<CR>
+
+" https://github.com/morhetz/gruvbox/wiki/Installation
+" autocmd vimenter * ++nested colorscheme gruvbo
+set background=dark " or light if you want light mode
+colorscheme gruvbox
+
+" colorscheme nightfox
